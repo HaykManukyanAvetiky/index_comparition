@@ -55,16 +55,10 @@ select job, nlp, year, sequence, count(*), max(issue_date), min(stamp)
 from test_4_col_ind 
 group by job, nlp, year, sequence
 ```
-
+explain plan
 ```
 Node Type	Entity			Cost				Rows	Time		Condition
 Aggregate	[NULL]			0.43 - 682128.53	7569241	887108.345	[NULL]
 Index Scan	test_4_col_ind	0.43 - 542097.54	7569243	878234.374	[NULL]
 ```
 
-```sql
-select * from test_6_col_ind 
-where 
-job between  4800 and 5200
-and nlp between  2400 and 2600 
-and year between  80 and 120
