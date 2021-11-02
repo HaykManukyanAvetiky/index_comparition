@@ -1,4 +1,4 @@
 # index_comparition
-Small study project for comparing tow indexes, and estimate worth of adaptive index  
+Small study project for comparing two indexes, and estimate worth of adaptive index  
 
 
