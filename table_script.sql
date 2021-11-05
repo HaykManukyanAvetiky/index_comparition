@@ -1,5 +1,4 @@
-DROP TABLE test;
-CREATE TABLE test (
+CREATE TABLE data_table (
   id BIGSERIAL ,
   job integer NOT NULL,
   nlp smallint not null,
@@ -10,24 +9,30 @@ CREATE TABLE test (
   issue_date date ,
   stamp timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   img_name varchar(255) DEFAULT null,
-  PRIMARY KEY (id, job));
+  PRIMARY KEY (id));
+
+ 
+CREATE TABLE data_3_indexes AS 
+TABLE data_table ;
+ 
+CREATE TABLE data_job_nlp_year_index AS 
+TABLE data_table ;
+
+CREATE TABLE data_1_index AS 
+TABLE data_table ;
+
+ALTER TABLE data_3_indexes ADD PRIMARY KEY (id);
+ALTER TABLE data_job_nlp_year_index ADD PRIMARY KEY (id);
+ALTER TABLE data_1_index ADD PRIMARY KEY (id);
 
 
-Create index job_nlp_year_sequence on test (job,nlp,year,sequence);
-Create index job_nlp_year_scan_id_issue_flag_sequence on test (job, nlp, year, scan_id, issue_flag, sequence);
+create index job_nlp_year_sequence on data_3_indexes (job, nlp, year, sequence);
+create index job_nlp_year_scan_id on data_3_indexes (job, nlp, year, scan_id);
+create index job_nlp_year_issue_flag on data_3_indexes (job, nlp, year, issue_flag);
 
-drop index job_nlp_year_sequence on test
+create index job_nlp_year on data_job_nlp_year_index (job, nlp, year);
 
-ALTER TABLE test
-RENAME TO test_6_col_ind;
-
-create table test_4_col_ind as 
-select * from test_6_col_ind;
-
-alter table test_4_col_ind 
-add CONSTRAINT test_4_col_ind_pkey PRIMARY KEY (id, job);
-
-Create index job_nlp_year_sequence on test_4_col_ind (job,nlp,year,sequence);
+create index job_nlp_year_scan_id_sequence_issue_flag on data_1_index (job, nlp, year, scan_id, sequence, issue_flag);
 
 
 

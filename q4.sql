@@ -13,3 +13,6 @@ job between :j1 and :j2
 and nlp between :n1 and :n2
 and year between :y1 and :y2
 and sequence between :s1 and :s2;
+
+
+--  pgbench -n -f q4.sql -T 60

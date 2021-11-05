@@ -30,7 +30,7 @@ def collect_stat(table_name):
                                 quotechar='|', quoting=csv.QUOTE_MINIMAL)
         spamwriter.writerow(['query_type','duration'])
 
-        for i in range(1,2):
+        for i in range(1,2000):
             nlp = random.randint(0,20)
             year = random.randint(0,15)
             job = random.randint(0,30)
@@ -51,5 +51,5 @@ def collect_stat(table_name):
 
 
 if __name__ == '__main__':
-    table_names =  ['data_table', 'data_table']
+    table_names =  ['data_3_indexes', 'data_job_nlp_year_index', 'data_1_index']
     [collect_stat(table_name) for table_name in table_names ]

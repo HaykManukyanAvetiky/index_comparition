@@ -27,7 +27,7 @@ def collect_stat(table_name):
         spamwriter.writerow(['query_type','duration'])
 
         for i in range(1,2000):
-            id = random.randint(1,45000000)
+            id = random.randint(1,35000000)
             scan = random.randint(0,10000)
             issue_flag = random.randint(0,200)
             sequence = random.randint(0,5000)
@@ -42,5 +42,5 @@ def collect_stat(table_name):
 
 
 if __name__ == '__main__':
-    table_names =  ['data_table', 'data_table']
+    table_names =  ['data_3_indexes', 'data_job_nlp_year_index', 'data_1_index']
     [collect_stat(table_name) for table_name in table_names ]
